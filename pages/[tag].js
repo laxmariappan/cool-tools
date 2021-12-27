@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Head from 'next/head'
+import { getAllData,getDataByTag } from "../lib/data";
 import Header from '../components/Header';
-import Tool from "../components/tool";
-import { getAllData } from "../lib/data";
-
-export default function Home({data}) {
+import Tool from '../components/tool';
+export default function TagData({data,tag}) {
   const {tools, error, message} = data
   return (
     <>
     <Header/>
     <div className="flex flex-col   py-2 bg-gray-100">
       <Head>
-        <title>Cool Tools</title>
+        <title>Tools tagged with {tag}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="px-4 py-12 mx-auto max-w-7xl min-h-screen">
@@ -42,14 +41,26 @@ export default function Home({data}) {
   )
 }
 
-
-
-
-export async function getStaticProps() {
+export async function getStaticPaths() {
   const result = await getAllData();
+    // Get the paths we want to pre-render based on posts
+    const paths = result.tools.map((tool) => ({
+      params: { tag: tool.properties.Tags.multi_select[0].name },
+    }))
+  
+    // We'll pre-render only these paths at build time.
+    // { fallback: blocking } will server-render pages
+    // on-demand if the path doesn't exist.
+    return { paths, fallback: 'blocking' }
+  }
+
+export async function getStaticProps(context) {
+  const { tag } = context.params;
+  const result = await getDataByTag(tag);
   return {
     props: {
-      data:result
+      data: result,
+      tag:tag,
     },
     revalidate: 10,
   };
