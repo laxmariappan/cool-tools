@@ -4,7 +4,7 @@ export default function Tool({ item }) {
   return (
     <>
       <div className="min-h-0 h-32  ">
-        <h2 className="mb-2 text-lg font-semibold text-gray-900">
+        <h2 className="mb-2 text-2xl font-heading font-semibold text-gray-900">
           <Link
             href={item.properties.Link.rich_text[0]?.plain_text}
             passHref={true}
@@ -18,7 +18,7 @@ export default function Tool({ item }) {
           {item.properties.Description.rich_text[0]?.plain_text}
         </p>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap flex-row">
         {tags.length > 0 &&
           tags.map(function (tag, index) {
             return (
@@ -34,7 +34,7 @@ export default function Tool({ item }) {
                   style={{
                     backgroundColor: tag.color,
                     backgroundImage:
-                      "linear-gradient(180deg,#ffffffe6,#ffffffe6)",
+                      "linear-gradient(180deg,#ffffffad,#ffffffad)",
                   }}
                 >
                   <span className="">{tag?.name}</span>

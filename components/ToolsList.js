@@ -14,7 +14,7 @@ const ToolsList = ({ tools, error, isLoadingMore, loadMore, reachedEnd }) => {
       return (
         <div
           key={tool.id}
-          className="relative px-5 py-3 h-48 min-h-0 hover:shadow bg-white rounded"
+          className="flex flex-col px-5 py-3 min-h-0 hover:shadow bg-white rounded"
         >
           <Tool item={tool} />
         </div>

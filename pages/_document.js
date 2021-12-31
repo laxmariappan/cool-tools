@@ -8,8 +8,11 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces&Roboto&family=Quicksand&display=swap" rel="stylesheet"/>
         </Head>
         <body>
           <Main />
