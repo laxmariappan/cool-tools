@@ -20,7 +20,7 @@ export default function Header() {
               </Link>
             </div>
             <Link href="/add">
-              <a className="btn btn-sm btn-link">Add a Tool</a>
+              <a className="btn btn-sm btn-link">Add New</a>
             </Link>
 
             <form action="/search" method="get">
